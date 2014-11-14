@@ -1,0 +1,10 @@
+{
+  "name": "WebApplicationTutorial",
+  "version": "0.0.0",
+  "description": "WebApplicationTutorial",
+  "main": "server.js",
+  "author": {
+    "name": "Rogerio",
+    "email": ""
+  }
+}

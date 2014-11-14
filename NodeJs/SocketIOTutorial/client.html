@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>Chat Client</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var server = io.connect('http://localhost:8080');
+        server.on('messages', function (data) {
+            alert(data.hello);
+        });
+    </script>
+
+
+</head>
+<body>
+
+   
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿extends layout
+
+block content
+  h1= title
+  h2 View in use: #{view}
+  h2 Name: #{name}
+
+  if user
+    h2 User: #{user}
+    p This is a second line for the user
+  else
+    h2 You can enter the user bu using: user=User01
+    p This is a second line for non user
+
+  if image
+    img
+
+  a(href='pages?view=View01&title=Title&name=Elza') Elza
+  br
+  a(class='button', href='pages?view=View01&title=Title&name=Rogerio') Rogerio
+
+  p
+  input(type='checkbox', checked)
+
+  //Script example with if verifying the code type.
+  p
+  if usingJade
+    script.    
+        if (#{usingJade})
+            console.log('you are awesome')
+        else
+            console.log('use jade')
+ 
+  //List example
+  p
+  li List 01
+  li List 02
+  li List 03
+
+  p
+  for (var x = 0; x < 3; x++)
+  li item
+
+  //List interation with array
+  p
+  ul
+    each val in [1, 2, 3, 4, 5]
+        li= val
+
+  p
+  ul
+    each val, index in ['zero', 'one', 'two']
+        li= index + ': ' + val
+   
+  h1 ----------------------------------

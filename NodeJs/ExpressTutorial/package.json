@@ -1,0 +1,15 @@
+{
+  "name": "ExpressTutorial",
+  "version": "0.0.0",
+  "description": "ExpressTutorial",
+  "main": "app.js",
+  "author": {
+    "name": "Rogerio",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*"
+  }
+}

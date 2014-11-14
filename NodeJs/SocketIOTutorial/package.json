@@ -1,0 +1,14 @@
+{
+  "name": "SocketIOTutorial",
+  "version": "0.0.0",
+  "description": "SocketIOTutorial",
+  "main": "server.js",
+  "author": {
+    "name": "Rogerio",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "~3.4.4",
+    "socket.io": "~1.0.6"   
+  }
+}
