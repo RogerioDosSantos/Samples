@@ -47,8 +47,8 @@ int main(int argc, char* argv[])
 	wchar_t command[3] = { L'\0', L'\0', L'\0' };
 	while (command[0] != L'Y' && command[0] != L'y')
 	{		
-		wprintf(L"*** Boost Test:\n");
-		wprintf(L"Enter the desired test code number or ? for a code list: ");
+		wprintf(L"*** Boost Example:\n");
+		wprintf(L"Enter the desired example code number or ? for a code list: ");
 		wscanf_s(L"%s", &command[0], 3);
 		wprintf(L"\n\n");
 		
