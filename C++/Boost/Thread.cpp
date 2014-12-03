@@ -45,6 +45,8 @@ void boost_example::Thread()
 	wprintf(L"*** Boost Thread Example - Start\n");
 
 	CallableObject callable_object;
+
+	wprintf(L"Initializing thread individualy (thread object).\n");
 	thread object_thread(boost::ref(callable_object));
 	thread function_thread(CallableFunction);
 	thread object_thread1(boost::ref(callable_object));
@@ -56,6 +58,18 @@ void boost_example::Thread()
 	object_thread1.join();
 	function_thread1.join();
 	wprintf(L"New thread execution was finalized.\n");
+
+	wprintf(L"Initializing thread in group (thread_group object).\n");
+
+	boost::thread_group thread_group;
+	for (int index = 0; index < 3; ++index)
+	{
+		thread_group.create_thread(CallableFunction);
+		thread_group.create_thread(boost::ref(callable_object));
+	}
+
+	wprintf(L"Waiting for the new thread execution to be finalized.\n");
+	thread_group.join_all();
 
 	wprintf(L"*** Boost Thread Example - End\n\n");
 }

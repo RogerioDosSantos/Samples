@@ -11,15 +11,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bind.cpp" />
     <ClCompile Include="Boost.cpp" />
+    <ClCompile Include="IOService.cpp" />
+    <ClCompile Include="IOServiceTCP.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Serialization.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="WebClient.cpp" />
+    <ClCompile Include="WebServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bind.h" />
+    <ClInclude Include="IOService.h" />
+    <ClInclude Include="IOServiceTCP.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="Serialization.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="WebClient.h" />
+    <ClInclude Include="WebServer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1AA4FF4D-2EB7-4586-8023-5B426D1892B6}</ProjectGuid>

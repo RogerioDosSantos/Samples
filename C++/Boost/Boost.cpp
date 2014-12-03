@@ -7,6 +7,12 @@
 #include "./Timer.h"
 #include "./Thread.h"
 #include "./Serialization.h"
+#include "./Bind.h"
+#include "./IOService.h"
+#include "./IOServiceTCP.h"
+#include "./WebClient.h"
+#include "./WebServer.h"
+#include "./Parser.h"
 
 using namespace boost_example;
 
@@ -18,6 +24,12 @@ void CommandList()
 	wprintf(L"1 - Timer\n");
 	wprintf(L"2 - Thread\n");
 	wprintf(L"3 - Serialization\n");
+	wprintf(L"4 - Bind\n");
+	wprintf(L"5 - IOService\n");
+	wprintf(L"6 - IOServiceTCP\n");
+	wprintf(L"7 - WebClient\n");
+	wprintf(L"8 - WebServer\n");
+	wprintf(L"9 - Parser\n");
 
 	wprintf(L"\n");
 }
@@ -34,6 +46,24 @@ bool ExecuteCommand(unsigned int command)
 		break;
 	case 3:
 		Serialization();
+		break;
+	case 4:
+		Bind();
+		break;
+	case 5:
+		IOService();
+		break;
+	case 6:
+		IOServiceTCP();
+		break;
+	case 7:
+		WebClient();
+		break;
+	case 8:
+		WebServer();
+		break;		
+	case 9:
+		Parser();
 		break;
 	default:
 		return false;
@@ -81,11 +111,12 @@ int main(int argc, char* argv[])
 			continue;
 		}
 
-		while (command[0] != L'Y' && command[0] != L'y' && command[0] != L'N' && command[0] != L'n')
-		{
-			wprintf(L"\n\nWould you like to exit? (Y/N)\n");
-			wscanf_s(L"%s", &command[0], 3);
-		}
+		wprintf(L"\n\n");
+		//while (command[0] != L'Y' && command[0] != L'y' && command[0] != L'N' && command[0] != L'n')
+		//{
+		//	wprintf(L"\n\nWould you like to exit? (Y/N)\n");
+		//	wscanf_s(L"%s", &command[0], 3);
+		//}
 	}
 
 	return 0;
