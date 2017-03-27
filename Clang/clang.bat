@@ -26,8 +26,8 @@ IF NOT %final_line% == 0 echo Parsing line %initial_line% to %final_line%
 
 XCOPY "%clang_dir%%clang_format_name%" "%file_dir%" /R /Y
 
-IF %final_line% == 0 %clang_dir%%clang_name% -i -style=file  "%file_path%"
-IF NOT %final_line% == 0 %clang_dir%%clang_name% -i -style=file  -lines="%initial_line%:%final_line%" "%file_path%"
+IF %final_line% == 0 "%clang_dir%%clang_name%" -i -style=file  "%file_path%"
+IF NOT %final_line% == 0 "%clang_dir%%clang_name%" -i -style=file  -lines="%initial_line%:%final_line%" "%file_path%"
 
 IF EXIST %file_dir%*.tmp del %file_dir%*.tmp /Q
 IF EXIST %file_dir%%clang_format_name% del %file_dir%%clang_format_name% /Q
