@@ -26,6 +26,28 @@ message(" - Platform: ${var_platform}")
 message(" - Source Directory: ${CMAKE_SOURCE_DIR}")
 message(" - Build Type: ${CMAKE_BUILD_TYPE}")
 
+set(var_source_files
+  ./source/boost_samples.cpp
+  )
+message(" - Source Files: ${var_source_files}")
+
+set(var_link_libraries
+  libprogram_options.so
+  # libprogram_options.a
+  )
+message(" - Link Libraries: ${var_link_libraries}")
+
+include_directories(
+  /root/third-party/boost1.55
+  )
+
+link_directories(
+  /root/samples/c++/boost/stage/boost/bin/default/release
+  )
+
+string(TOLOWER "${var_stage_dir}/${var_project_name}/bin/${var_platform}/${CMAKE_BUILD_TYPE}" var_bin_dir)
+message(" - Binary Directory: ${var_bin_dir}")
+
 # External Libraries
 # execute_process(COMMAND "/root/host/git/samples/c++/boost/libs/boost/program_options/build/compile_default_release.sh")
 SET(var_dependency_names "boost_program_options")
@@ -59,26 +81,7 @@ externalproject_add(${var_dependency_names}
 # message("${var_dependency_names} installation directory: ${var_dependency_installation_dir}")
 
 
-set(var_source_files
-  ../source/boost_samples.cpp
-  )
-message("Source Files: ${var_source_files}")
-
-set(var_link_libraries
-  libprogram_options.so
-  # libprogram_options.a
-  )
-message("Link Libraries: ${var_link_libraries}")
-
-include_directories(
-  /root/third-party/boost1.55
-  )
-
-link_directories(
-  /root/samples/c++/boost/stage/boost/bin/default/release
-  )
-
-string(TOLOWER "${var_stage_dir}/${var_project_name}/bin/${var_platform}/${CMAKE_BUILD_TYPE}" var_bin_dir)
+# Compilation
 
 add_library(${var_binary_name}_static ${var_source_files})
 set_target_properties(${var_binary_name}_static 

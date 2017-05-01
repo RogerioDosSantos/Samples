@@ -14,12 +14,11 @@ trap 'exit' ERR
 set -E
 
 echo " "
-echo "*** Configuration:" 
+echo "*** Bash Configuration:" 
 echo "Project Name: $config_project_name"
 echo "Platform: $config_platform"
 echo "Flavor: $config_flavor"
 echo "Third Party Directory: $config_third_party_dir"
-echo "Stage Directory: $config_stage_dir"
 
 # Get variables based on the configuration
 cd "$(dirname "$0")"
@@ -29,7 +28,7 @@ config_stage_dir="$bash_dir/$config_stage_dir"
 mkdir -p $config_stage_dir
 cd $config_stage_dir
 config_stage_dir=$(pwd)
-echo " - Stage Directory: $config_stage_dir"
+echo "Stage Directory: $config_stage_dir"
 
 build_dir="$bash_dir/$config_project_name"
 mkdir -p $build_dir
@@ -40,7 +39,7 @@ cd $build_dir
 build_dir="$(pwd)/$config_flavor"
 mkdir -p $build_dir
 cd $build_dir
-echo " - Build Directory: $build_dir"
+echo "Build Directory: $build_dir"
 
 echo " "
 echo "*** Staging:" 
