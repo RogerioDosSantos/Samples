@@ -15,6 +15,7 @@ message(" - Build Type: ${CMAKE_BUILD_TYPE}")
 
 set(var_project_libraries
   program_options
+  timer
   )
 message(" - Project Libraries: ${var_project_libraries}")
 

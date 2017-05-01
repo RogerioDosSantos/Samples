@@ -1,15 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 
-# about this project
-# ------------------
-
-# project (boost_samples)
-# SET(boost_samples_VERSION_MAJOR "1")
-# SET(boost_samples_VERSION_MINOR "0")
-# SET(boost_samples_VERSION_PATCH "0")
-# SET(VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
-
-set(var_binary_name "program_options")
+set(var_binary_name "thread")
 
 # Configuration
 string(TOLOWER "${config_project_name}" var_project_name)

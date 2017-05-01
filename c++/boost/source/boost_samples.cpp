@@ -5,6 +5,18 @@
 #include <iostream>
 #include <string>
 
+// #include "./timer.h"
+// #include "./thread.h"
+// #include "./serialization.h"
+// #include "./bind.h"
+// #include "./ioservice.h"
+// #include "./ioservicetcp.h"
+// #include "./webclient.h"
+#include "./webserver.h"
+// #include "./parser.h"
+
+using namespace boost_example;
+
 namespace
 {
     const size_t ERROR_IN_COMMAND_LINE = 1;
@@ -21,8 +33,15 @@ int main(int argc, char** argv)
         po::options_description desc("Options");
         desc.add_options()
             ("help", "Print help messages")
-            ("add", "additional options")
-            ("like", "this")
+            ("timer", "Timer example")
+            ("thread", "Thread example")
+            ("serialization", "Serialization example")
+            ("bind", "Bind example")
+            ("ioservice", "Ioservice example")
+            ("ioservicetcp", "Ioservicetcp example")
+            ("webclient", "Webclient example")
+            ("webserver", "Webserver example")
+            ("parser", "Parser example")
           ;
 
         po::variables_map vm;
@@ -35,18 +54,72 @@ int main(int argc, char** argv)
                 return SUCCESS;
             }
 
+            // if (vm.count("timer"))
+            // {
+	          //     Timer();
+            //     return SUCCESS;
+            // }
+
+            // if (vm.count("thread"))
+            // {
+            //   Thread();
+            //   return SUCCESS;
+            // }
+            //
+            // if (vm.count("serialization"))
+            // {
+            //   Serialization();
+            //   return SUCCESS;
+            // }
+            //
+            // if (vm.count("bind"))
+            // {
+            //   Bind();
+            //   return SUCCESS;
+            // }
+            //
+            // if (vm.count("ioservice"))
+            // {
+            //   IOService();
+            //   return SUCCESS;
+            // }
+            //
+            // if (vm.count("ioservicetcp"))
+            // {
+            //   IOServiceTCP();
+            //   return SUCCESS;
+            // }
+            //
+            // if (vm.count("webclient"))
+            // {
+            //   WebClient();
+            //   return SUCCESS;
+            // }
+
+            if (vm.count("webserver"))
+            {
+              WebServer();
+              return SUCCESS;
+            }
+
+            // if (vm.count("parser"))
+            // {
+            //   Parser();
+            //   return SUCCESS;
+            // }
+
             po::notify(vm);  // throws on error, so do after help in case
         }
         catch (po::error& e)
         {
-            std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
-            std::cerr << desc << std::endl;
+            std::cout << "ERROR: " << e.what() << std::endl << std::endl;
+            std::cout << desc << std::endl;
             return ERROR_IN_COMMAND_LINE;
         }
     }
     catch (std::exception& e)
     {
-        std::cerr << "Unhandled Exception reached the top of main: " << e.what() << ", application will now exit" << std::endl;
+        std::cout << "Unhandled Exception reached the top of main: " << e.what() << ", application will now exit" << std::endl;
         return ERROR_UNHANDLED_EXCEPTION;
     }
 

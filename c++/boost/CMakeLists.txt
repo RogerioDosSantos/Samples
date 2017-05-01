@@ -31,16 +31,28 @@ message(" - Bin Directory: ${CMAKE_BUILD_TYPE}")
 
 set(var_source_files
   ./source/boost_samples.cpp
+  # ./source/timer.cpp
+  ./source/webserver.cpp
   )
 message(" - Source Files: ${var_source_files}")
 
 set(var_link_libraries
   libprogram_options.a
+  libsystem.a
+  # libtimer.a
+  # libchrono.a
+  # libthread.a
+  # libfilesystem.a
   )
 message(" - Link Libraries: ${var_link_libraries}")
 
 set(var_static_dependency_projects
   ./libs/boost/program_options
+  ./libs/boost/system
+  # ./libs/boost/timer
+  # ./libs/boost/chrono
+  # ./libs/boost/thread
+  # ./libs/boost/filesystem
   )
 message(" - Static Dependencies Projects: ${var_static_dependency_projects}")
 
