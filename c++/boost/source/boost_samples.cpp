@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+// #include <signal.h>
 
 // #include "./timer.h"
 // #include "./thread.h"
@@ -11,7 +12,7 @@
 // #include "./bind.h"
 // #include "./ioservice.h"
 // #include "./ioservicetcp.h"
-#include "./webclient.h"
+// #include "./webclient.h"
 #include "./webserver.h"
 // #include "./parser.h"
 
@@ -19,14 +20,28 @@ using namespace boost_example;
 
 namespace
 {
-    const size_t ERROR_IN_COMMAND_LINE = 1;
     const size_t SUCCESS = 0;
+    const size_t ERROR_IN_COMMAND_LINE = 1;
+    const size_t ERROR_COULD_NOT_FORK_PROCESS = 2;
     const size_t ERROR_UNHANDLED_EXCEPTION = 2;
 
 }  // namespace
 
 int main(int argc, char** argv)
 {
+    // // Fork the process if it is a parent process
+    // // signal(SIGCHLD, SIG_IGN); //ignoring SIGCHLD, to prevent zombie processes
+    // pid_t process_id = fork();
+    // std::cout << "Process ID:" << process_id << std::endl;
+    // if (process_id < 0)
+    // {
+    //     std::cout << "Failed to fork process" << std::endl;
+    //     return ERROR_COULD_NOT_FORK_PROCESS;
+    // }
+    //
+    // if (process_id != 0)
+    //     return SUCCESS;  // Parent Process
+
     try
     {
         namespace po = boost::program_options;
@@ -51,12 +66,14 @@ int main(int argc, char** argv)
             if (vm.count("help"))
             {
                 std::cout << "Basic Command Line Parameter App" << std::endl << desc << std::endl;
+                std::cout << "Press any key to continue" << std::endl;
+                getchar();
                 return SUCCESS;
             }
 
             // if (vm.count("timer"))
             // {
-	          //     Timer();
+            //     Timer();
             //     return SUCCESS;
             // }
 
@@ -92,14 +109,14 @@ int main(int argc, char** argv)
 
             if (vm.count("webclient"))
             {
-              WebClient();
-              return SUCCESS;
+                // WebClient();
+                return SUCCESS;
             }
 
             if (vm.count("webserver"))
             {
-              WebServer();
-              return SUCCESS;
+                WebServer();
+                return SUCCESS;
             }
 
             // if (vm.count("parser"))

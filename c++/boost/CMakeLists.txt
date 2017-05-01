@@ -33,7 +33,7 @@ set(var_source_files
   ./source/boost_samples.cpp
   # ./source/timer.cpp
   ./source/webserver.cpp
-  ./source/webclient.cpp
+  # ./source/webclient.cpp
   )
 message(" - Source Files: ${var_source_files}")
 
@@ -147,3 +147,4 @@ set_target_properties(${var_binary_name}_executable
   RUNTIME_OUTPUT_DIRECTORY ${var_bin_dir}
   OUTPUT_NAME ${var_binary_name}
   )
+
