@@ -39,7 +39,7 @@ echo " - Build Directory: $build_dir"
 echo " "
 echo "*** Staging:" 
 # cmake $cmake_config_path -DSTAGE_DIRECTORY="$config_stage_dir"
-cmake ../../.. -Dconfig_project_name="$config_project_name" -Dconfig_third_party_dir="$config_third_party_dir" -Dconfig_stage_dir="$config_stage_dir" -Dconfig_platform="$config_platform" -DCMAKE_BUILD_TYPE="$config_flavor"
+cmake ../../../.. -Dconfig_project_name="$config_project_name" -Dconfig_third_party_dir="$config_third_party_dir" -Dconfig_stage_dir="$config_stage_dir" -Dconfig_platform="$config_platform" -DCMAKE_BUILD_TYPE="$config_flavor"
 
 echo " "
 echo "*** Compiling:" 
