@@ -4,17 +4,17 @@
 #include <wchar.h>
 #include <string> 
 
-#include "./Timer.h"
-#include "./Thread.h"
-#include "./Serialization.h"
-#include "./Bind.h"
-#include "./IOService.h"
-#include "./IOServiceTCP.h"
-#include "./WebClient.h"
-#include "./WebServer.h"
-#include "./Parser.h"
+// #include "./Timer.h"
+// #include "./Thread.h"
+// #include "./Serialization.h"
+// #include "./Bind.h"
+// #include "./IOService.h"
+// #include "./IOServiceTCP.h"
+// #include "./WebClient.h"
+// #include "./WebServer.h"
+// #include "./Parser.h"
 
-using namespace boost_example;
+// using namespace boost_example;
 
 void CommandList()
 {
@@ -38,33 +38,33 @@ bool ExecuteCommand(unsigned int command)
 {
 	switch (command)
 	{
-	case 1:
-		Timer();
-		break;
-	case 2:
-		Thread();
-		break;
-	case 3:
-		Serialization();
-		break;
-	case 4:
-		Bind();
-		break;
-	case 5:
-		IOService();
-		break;
-	case 6:
-		IOServiceTCP();
-		break;
-	case 7:
-		WebClient();
-		break;
-	case 8:
-		WebServer();
-		break;		
-	case 9:
-		Parser();
-		break;
+	// case 1:
+	// 	Timer();
+	// 	break;
+	// case 2:
+	// 	Thread();
+	// 	break;
+	// case 3:
+	// 	Serialization();
+	// 	break;
+	// case 4:
+	// 	Bind();
+	// 	break;
+	// case 5:
+	// 	IOService();
+	// 	break;
+	// case 6:
+	// 	IOServiceTCP();
+	// 	break;
+	// case 7:
+	// 	WebClient();
+	// 	break;
+	// case 8:
+	// 	WebServer();
+	// 	break;		
+	// case 9:
+	// 	Parser();
+	// 	break;
 	default:
 		return false;
 	}
