@@ -33,6 +33,7 @@ set(var_source_files
   ./source/boost_samples.cpp
   # ./source/timer.cpp
   ./source/webserver.cpp
+  ./source/webclient.cpp
   )
 message(" - Source Files: ${var_source_files}")
 
@@ -76,6 +77,8 @@ foreach(var_dependency_project ${var_static_dependency_projects})
   set(var_all_dependency_projects ${var_all_dependency_projects} ${var_dependency_name}_static)
 endforeach(var_dependency_project)
 
+
+
 # # External Libraries
 # # execute_process(COMMAND "/root/host/git/samples/c++/boost/libs/boost/program_options/build/compile_default_release.sh")
 # SET(var_static_dependency_projects "boost_program_options")
@@ -109,6 +112,10 @@ endforeach(var_dependency_project)
 # # message("${var_static_dependency_projects} installation directory: ${var_dependency_installation_dir}")
 #
 
+# Thread Libraries (Needed for pthread support)
+find_package(Threads)
+set(var_link_libraries ${var_link_libraries} ${CMAKE_THREAD_LIBS_INIT})
+message(" - Theads Libraries: ${CMAKE_THREAD_LIBS_INIT}")
 
 add_library(${var_binary_name}_static ${var_source_files})
 set_target_properties(${var_binary_name}_static 

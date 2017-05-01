@@ -25,8 +25,6 @@ include_directories(
   /root/third-party/boost1.55
   )
 
-add_definitions(-DBOOST_THREAD_PROVIDES_INTERRUPTIONS)
-
 string(TOLOWER "${var_stage_dir}/${var_project_name}/bin/${var_platform}/${CMAKE_BUILD_TYPE}" var_bin_dir)
 
 add_library(${var_binary_name}_static ${var_source_files})
