@@ -26,62 +26,77 @@ message(" - Platform: ${var_platform}")
 message(" - Source Directory: ${CMAKE_SOURCE_DIR}")
 message(" - Build Type: ${CMAKE_BUILD_TYPE}")
 
+string(TOLOWER "${var_stage_dir}/${var_project_name}/bin/${var_platform}/${CMAKE_BUILD_TYPE}" var_bin_dir)
+message(" - Bin Directory: ${CMAKE_BUILD_TYPE}")
+
 set(var_source_files
   ./source/boost_samples.cpp
   )
 message(" - Source Files: ${var_source_files}")
 
 set(var_link_libraries
-  libprogram_options.so
-  # libprogram_options.a
+  libprogram_options.a
   )
 message(" - Link Libraries: ${var_link_libraries}")
+
+set(var_static_dependency_projects
+  ./libs/boost/program_options
+  )
+message(" - Static Dependencies Projects: ${var_static_dependency_projects}")
 
 include_directories(
   /root/third-party/boost1.55
   )
 
 link_directories(
+  ${var_bin_dir}
   /root/samples/c++/boost/stage/boost/bin/default/release
   )
 
-string(TOLOWER "${var_stage_dir}/${var_project_name}/bin/${var_platform}/${CMAKE_BUILD_TYPE}" var_bin_dir)
 message(" - Binary Directory: ${var_bin_dir}")
 
-# External Libraries
-# execute_process(COMMAND "/root/host/git/samples/c++/boost/libs/boost/program_options/build/compile_default_release.sh")
-SET(var_dependency_names "boost_program_options")
-externalproject_add(${var_dependency_names}
-  PREFIX            ${var_dependency_names}
-  TMP_DIR           ${var_dependency_names}/temp
-  STAMP_DIR         ${var_dependency_names}/stamp
-  #--Download step--------------
-  DOWNLOAD_DIR      ${var_dependency_names}/download
-  # DOWNLOAD_COMMAND  rsync -av --progress /root/samples/c++/boost/libs/boost ../source
-  DOWNLOAD_COMMAND  ""
-  #--Update/Patch step----------
-  UPDATE_COMMAND    ""
-  #--Configure step-------------
-  # SOURCE_DIR        ${var_dependency_names}/source
-  SOURCE_DIR        "/root/host/git/samples/c++/boost/libs/boost/program_options/build"
-  CONFIGURE_COMMAND ""
-  #--Build step-----------------
-  # BUILD_COMMAND     ../source/boost/program_options/build/compile.sh "${var_project_name}" "${var_platform}" "${CMAKE_BUILD_TYPE}" "${var_third_party_dir}" "${var_stage_dir}"
-  # BUILD_COMMAND        "/root/host/git/samples/c++/boost/libs/boost/program_options/build/compile_default_release.sh"
-  BUILD_COMMAND        "./compile_default_release.sh"
-  # BUILD_COMMAND     ./compile.sh "${var_project_name}" "${var_platform}" "${CMAKE_BUILD_TYPE}" "${var_third_party_dir}" "${var_stage_dir}"
-  BUILD_IN_SOURCE   1
-  BUILD_ALWAYS 1
-  #--Install step---------------
-  # INSTALL_COMMAND    rsync -av --progress ./program_options/build/default/*.a ../output/
-  INSTALL_COMMAND ""
-  )
+# Compilation of Dependencies
+message("Adding Dependencies:")
+foreach(var_dependency_project ${var_static_dependency_projects})
+  message("- ${CMAKE_CURRENT_SOURCE_DIR}/${var_dependency_project}")
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${var_dependency_project})
+  get_filename_component(var_dependency_name ${var_dependency_project} NAME)
+  set(var_all_dependency_projects ${var_all_dependency_projects} ${var_dependency_name}_static)
+endforeach(var_dependency_project)
 
-# externalproject_get_property(${var_dependency_names} var_dependency_installation_dir)
-# message("${var_dependency_names} installation directory: ${var_dependency_installation_dir}")
+# # External Libraries
+# # execute_process(COMMAND "/root/host/git/samples/c++/boost/libs/boost/program_options/build/compile_default_release.sh")
+# SET(var_static_dependency_projects "boost_program_options")
+# externalproject_add(${var_static_dependency_projects}
+#   PREFIX            ${var_static_dependency_projects}
+#   TMP_DIR           ${var_static_dependency_projects}/temp
+#   STAMP_DIR         ${var_static_dependency_projects}/stamp
+#   #--Download step--------------
+#   DOWNLOAD_DIR      ${var_static_dependency_projects}/download
+#   # DOWNLOAD_COMMAND  rsync -av --progress /root/samples/c++/boost/libs/boost ../source
+#   DOWNLOAD_COMMAND  ""
+#   #--Update/Patch step----------
+#   UPDATE_COMMAND    ""
+#   #--Configure step-------------
+#   # SOURCE_DIR        ${var_static_dependency_projects}/source
+#   SOURCE_DIR        "/root/host/git/samples/c++/boost/libs/boost/program_options/build"
+#   CONFIGURE_COMMAND ""
+#   #--Build step-----------------
+#   # BUILD_COMMAND     ../source/boost/program_options/build/compile.sh "${var_project_name}" "${var_platform}" "${CMAKE_BUILD_TYPE}" "${var_third_party_dir}" "${var_stage_dir}"
+#   # BUILD_COMMAND        "/root/host/git/samples/c++/boost/libs/boost/program_options/build/compile_default_release.sh"
+#   BUILD_COMMAND        "./compile_default_release.sh"
+#   # BUILD_COMMAND     ./compile.sh "${var_project_name}" "${var_platform}" "${CMAKE_BUILD_TYPE}" "${var_third_party_dir}" "${var_stage_dir}"
+#   BUILD_IN_SOURCE   1
+#   BUILD_ALWAYS 1
+#   #--Install step---------------
+#   # INSTALL_COMMAND    rsync -av --progress ./program_options/build/default/*.a ../output/
+#   INSTALL_COMMAND ""
+#   )
+#
+# # externalproject_get_property(${var_static_dependency_projects} var_dependency_installation_dir)
+# # message("${var_static_dependency_projects} installation directory: ${var_dependency_installation_dir}")
+#
 
-
-# Compilation
 
 add_library(${var_binary_name}_static ${var_source_files})
 set_target_properties(${var_binary_name}_static 
@@ -93,7 +108,7 @@ set_target_properties(${var_binary_name}_static
   )
 
 # add_library(${var_binary_name}_shared SHARED ${var_source_files})
-# add_dependencies(${var_binary_name}_shared ${var_dependency_names})
+# add_dependencies(${var_binary_name}_shared ${var_static_dependency_projects})
 # target_link_libraries(${var_binary_name}_shared ${var_link_libraries})
 # set_target_properties(${var_binary_name}_shared 
 #   PROPERTIES 
@@ -104,7 +119,7 @@ set_target_properties(${var_binary_name}_static
 #   )
 
 add_executable(${var_binary_name}_executable ${var_source_files})
-add_dependencies(${var_binary_name}_executable ${var_dependency_names})
+add_dependencies(${var_binary_name}_executable ${var_all_dependency_projects})
 target_link_libraries(${var_binary_name}_executable ${var_link_libraries})
 set_target_properties(${var_binary_name}_executable
   PROPERTIES 

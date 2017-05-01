@@ -47,6 +47,7 @@ cmake ../../../.. -Dconfig_project_name="$config_project_name" -Dconfig_third_pa
 
 echo " "
 echo "*** Compiling:" 
+# make clean
 # make VERBOSE=1
 make
 
