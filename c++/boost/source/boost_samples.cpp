@@ -6,7 +6,7 @@
 #include <string>
 // #include <signal.h>
 
-// #include "./timer.h"
+#include "./timer.h"
 #include "./thread.h"
 // #include "./serialization.h"
 // #include "./bind.h"
@@ -71,11 +71,11 @@ int main(int argc, char** argv)
                 return SUCCESS;
             }
 
-            // if (vm.count("timer"))
-            // {
-            //     Timer();
-            //     return SUCCESS;
-            // }
+            if (vm.count("timer"))
+            {
+                Timer();
+                return SUCCESS;
+            }
 
             if (vm.count("thread"))
             {
