@@ -35,7 +35,7 @@ set_target_properties(${var_binary_name}_static
   LIBRARY_OUTPUT_DIRECTORY ${var_bin_dir}
   ARCHIVE_OUTPUT_DIRECTORY ${var_bin_dir}
   RUNTIME_OUTPUT_DIRECTORY ${var_bin_dir}
-  OUTPUT_NAME ${var_binary_name}
+  OUTPUT_NAME boost_${var_binary_name}
   )
 
 add_library(${var_binary_name}_shared SHARED ${var_source_files})
@@ -44,5 +44,5 @@ set_target_properties(${var_binary_name}_shared
   LIBRARY_OUTPUT_DIRECTORY ${var_bin_dir}
   ARCHIVE_OUTPUT_DIRECTORY ${var_bin_dir}
   RUNTIME_OUTPUT_DIRECTORY ${var_bin_dir}
-  OUTPUT_NAME ${var_binary_name}
+  OUTPUT_NAME boost_${var_binary_name}
   )

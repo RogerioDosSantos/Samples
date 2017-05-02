@@ -7,7 +7,7 @@
 // #include <signal.h>
 
 // #include "./timer.h"
-// #include "./thread.h"
+#include "./thread.h"
 // #include "./serialization.h"
 // #include "./bind.h"
 // #include "./ioservice.h"
@@ -77,12 +77,12 @@ int main(int argc, char** argv)
             //     return SUCCESS;
             // }
 
-            // if (vm.count("thread"))
-            // {
-            //   Thread();
-            //   return SUCCESS;
-            // }
-            //
+            if (vm.count("thread"))
+            {
+              Thread();
+              return SUCCESS;
+            }
+
             // if (vm.count("serialization"))
             // {
             //   Serialization();

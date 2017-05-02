@@ -18,6 +18,9 @@ message(" - Build Type: ${CMAKE_BUILD_TYPE}")
 file(GLOB var_source_files
   ${var_third_party_dir}/boost1.55/libs/${var_binary_name}/src/*.h
   ${var_third_party_dir}/boost1.55/libs/${var_binary_name}/src/*.cpp
+  ${var_third_party_dir}/boost1.55/libs/${var_binary_name}/src/pthread/*.h
+  ${var_third_party_dir}/boost1.55/libs/${var_binary_name}/src/pthread/*.cpp
+  ${var_third_party_dir}/boost1.55/libs/${var_binary_name}/src/pthread/*.iln
   )
 message("Source Files: ${var_source_files}")
 
@@ -26,6 +29,8 @@ include_directories(
   )
 
 add_definitions(-DBOOST_THREAD_PROVIDES_INTERRUPTIONS)
+# add_definitions(-D_POSIX_THREADS)
+# add_definitions(-D__USE_XOPEN2K8)
 
 string(TOLOWER "${var_stage_dir}/${var_project_name}/bin/${var_platform}/${CMAKE_BUILD_TYPE}" var_bin_dir)
 
@@ -35,14 +40,16 @@ set_target_properties(${var_binary_name}_static
   LIBRARY_OUTPUT_DIRECTORY ${var_bin_dir}
   ARCHIVE_OUTPUT_DIRECTORY ${var_bin_dir}
   RUNTIME_OUTPUT_DIRECTORY ${var_bin_dir}
-  OUTPUT_NAME ${var_binary_name}
+  OUTPUT_NAME boost_${var_binary_name}
+  # TODO(Roger): Compile without the need to C++11
+  COMPILE_FLAGS "-fPIC -Wl,--exclude-libs,ALL -std=c++0x"
   )
 
-add_library(${var_binary_name}_shared SHARED ${var_source_files})
-set_target_properties(${var_binary_name}_shared 
-  PROPERTIES 
-  LIBRARY_OUTPUT_DIRECTORY ${var_bin_dir}
-  ARCHIVE_OUTPUT_DIRECTORY ${var_bin_dir}
-  RUNTIME_OUTPUT_DIRECTORY ${var_bin_dir}
-  OUTPUT_NAME ${var_binary_name}
-  )
+# add_library(${var_binary_name}_shared SHARED ${var_source_files})
+# set_target_properties(${var_binary_name}_shared 
+#   PROPERTIES 
+#   LIBRARY_OUTPUT_DIRECTORY ${var_bin_dir}
+#   ARCHIVE_OUTPUT_DIRECTORY ${var_bin_dir}
+#   RUNTIME_OUTPUT_DIRECTORY ${var_bin_dir}
+#   OUTPUT_NAME boost_${var_binary_name}
+#   )

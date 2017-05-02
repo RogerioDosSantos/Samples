@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 
-set(var_binary_name "timer")
+set(var_binary_name "boost_timer")
 
 # Configuration
 string(TOLOWER "${config_project_name}" var_project_name)
