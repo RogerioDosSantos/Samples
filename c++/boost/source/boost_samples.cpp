@@ -66,8 +66,8 @@ int main(int argc, char** argv)
             if (vm.count("help"))
             {
                 std::cout << "Basic Command Line Parameter App" << std::endl << desc << std::endl;
-                std::cout << "Press any key to continue" << std::endl;
-                getchar();
+                // std::cout << "Press any key to continue" << std::endl;
+                // getchar();
                 return SUCCESS;
             }
 
