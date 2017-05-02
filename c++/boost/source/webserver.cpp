@@ -16,34 +16,7 @@ WebServer::WebServer()
     , _acceptor(_io_service, _endpoint)
     , _socket(_io_service)
 {
-    // _data = "HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, world!";
-    _data =
-        "\r\n"
-        "{\r\n"
-        "  \"historian data\" : \r\n"
-        "    {\r\n"
-        "      \"id\" : 001, \r\n"
-        "      \"time stamp\" : \"2016-12-31 23:59:59\", \r\n"
-        "      \"values\": \r\n"
-        "        {\r\n"
-        "          \"tags\" : \r\n"
-        "            [\r\n"
-        "              {\r\n"
-        "                \"name\" : \"real_tag\", \r\n"
-        "                \"value\" : 123.3224\r\n"
-        "              }, \r\n"
-        "              {\r\n"
-        "                \"name\" : \"string_tag\", \r\n"
-        "                \"value\" : \"This is the string tag value\"\r\n"
-        "              },\r\n"
-        "              {\r\n"
-        "                \"name\" : \"boolean_tag\", \r\n"
-        "                \"value\" : true\r\n"
-        "              }\r\n"
-        "            ]\r\n"
-        "        }\r\n"
-        "    }\r\n"
-        "}";
+    _data = "HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, world!";
 }
 
 WebServer::~WebServer()
@@ -72,7 +45,6 @@ void WebServer::AcceptHandler(const boost::system::error_code& error_code)
         return;
     }
 
-    // boost::asio::async_write(_socket, boost::asio::buffer(_data), boost::bind(&WebServer::WriteHandler, this, _1, _2));
     boost::asio::async_write(_socket, boost::asio::buffer(_data), boost::bind(&WebServer::WriteHandler, this, _1, _2));
     wprintf(L"AcceptHandler - End\n");
 }

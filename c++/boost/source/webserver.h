@@ -1,7 +1,5 @@
 
-#include <stdio.h>
 #include <boost/asio.hpp>
-#include <boost/format.hpp>
 #include <string>
 
 namespace web_server_example
