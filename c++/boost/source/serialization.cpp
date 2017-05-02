@@ -38,7 +38,7 @@ void boost_example::Serialization()
 	file_path /= L"JsonTest.txt";
 	wprintf((wformat(L"File Path: %s\n") % file_path.generic_wstring()).str().c_str());
 
-	std::wofstream file(file_path.generic_wstring().c_str());
+	std::wofstream file(file_path.generic_string().c_str());
 	if (!file.is_open())
 	{
 		wprintf(L"Could not create the file\n");
@@ -59,7 +59,7 @@ void boost_example::Serialization()
 	wprintf(L"Loading from the file\n");
 	wprintf((wformat(L"File Path: %s\n") % file_path.generic_wstring()).str().c_str());
 
-	std::wifstream read_file(file_path.generic_wstring().c_str());
+	std::wifstream read_file(file_path.generic_string().c_str());
 	if (!read_file.is_open())
 	{
 		wprintf(L"Could not load the file\n");

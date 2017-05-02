@@ -8,13 +8,13 @@
 
 #include "./timer.h"
 #include "./thread.h"
-// #include "./serialization.h"
-// #include "./bind.h"
-// #include "./ioservice.h"
-// #include "./ioservicetcp.h"
+#include "./serialization.h"
+#include "./bind.h"
+#include "./ioservice.h"
+#include "./ioservicetcp.h"
 #include "./webclient.h"
 #include "./webserver.h"
-// #include "./parser.h"
+#include "./parser.h"
 
 using namespace boost_example;
 
@@ -83,29 +83,29 @@ int main(int argc, char** argv)
               return SUCCESS;
             }
 
-            // if (vm.count("serialization"))
-            // {
-            //   Serialization();
-            //   return SUCCESS;
-            // }
-            //
-            // if (vm.count("bind"))
-            // {
-            //   Bind();
-            //   return SUCCESS;
-            // }
-            //
-            // if (vm.count("ioservice"))
-            // {
-            //   IOService();
-            //   return SUCCESS;
-            // }
-            //
-            // if (vm.count("ioservicetcp"))
-            // {
-            //   IOServiceTCP();
-            //   return SUCCESS;
-            // }
+            if (vm.count("serialization"))
+            {
+              Serialization();
+              return SUCCESS;
+            }
+
+            if (vm.count("bind"))
+            {
+              Bind();
+              return SUCCESS;
+            }
+
+            if (vm.count("ioservice"))
+            {
+              IOService();
+              return SUCCESS;
+            }
+
+            if (vm.count("ioservicetcp"))
+            {
+              IOServiceTCP();
+              return SUCCESS;
+            }
 
             if (vm.count("webclient"))
             {
@@ -119,11 +119,11 @@ int main(int argc, char** argv)
                 return SUCCESS;
             }
 
-            // if (vm.count("parser"))
-            // {
-            //   Parser();
-            //   return SUCCESS;
-            // }
+            if (vm.count("parser"))
+            {
+              Parser();
+              return SUCCESS;
+            }
 
             po::notify(vm);  // throws on error, so do after help in case
         }

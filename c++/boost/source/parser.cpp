@@ -34,7 +34,7 @@ void ParserTestObject::ParseMatchToVector(double value, void* values_vector)
 {
 	std::vector<double>* values = (std::vector<double>*)values_vector;
 	wprintf((wformat(L"ParserTestObject::ParseMatchToVector - Value = %d\n") % value).str().c_str());
-	if (values == nullptr)
+	if (values == NULL)
 		return;
 
 	values->push_back(value);
@@ -53,7 +53,7 @@ void ParserValueMatch(double value)
 
 bool GetExpression(const wchar_t* exmpression_name, const wchar_t* example, std::wstring* expression)
 {
-	if (expression == nullptr)
+	if (expression == NULL)
 		return false;
 
 	expression->clear();

@@ -43,7 +43,7 @@ void Function03(int parameter01, void* parameter02A)
 {
 	vector<int>* parameter02 = (vector<int>*)parameter02A;
 	wprintf((wformat(L"Function03 - Parameter 01 = %d\n") % parameter01).str().c_str());
-	if (parameter02 == nullptr)
+	if (parameter02 == NULL)
 		return;
 
 	parameter02->push_back(parameter01);

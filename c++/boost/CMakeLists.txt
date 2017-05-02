@@ -33,8 +33,13 @@ set(var_source_files
   ./source/boost_samples.cpp
   ./source/timer.cpp
   ./source/thread.cpp
+  ./source/serialization.cpp
+  ./source/bind.cpp
+  ./source/ioservice.cpp
+  ./source/ioservicetcp.cpp
   ./source/webserver.cpp
   ./source/webclient.cpp
+  ./source/parser.cpp
   )
 message(" - Source Files: ${var_source_files}")
 
@@ -44,8 +49,7 @@ set(var_link_libraries
   libboost_system.a
   libboost_timer.a
   libboost_chrono.a
-  libboost_thread.a
-  # libfilesystem.a
+  libboost_filesystem.a
   )
 message(" - Link Libraries: ${var_link_libraries}")
 
@@ -55,7 +59,7 @@ set(var_static_dependency_projects
   ./libs/boost/timer
   ./libs/boost/chrono
   ./libs/boost/thread
-  # ./libs/boost/filesystem
+  ./libs/boost/filesystem
   )
 message(" - Static Dependencies Projects: ${var_static_dependency_projects}")
 
