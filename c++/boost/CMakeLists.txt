@@ -33,7 +33,7 @@ set(var_source_files
   ./source/boost_samples.cpp
   # ./source/timer.cpp
   ./source/webserver.cpp
-  # ./source/webclient.cpp
+  ./source/webclient.cpp
   )
 message(" - Source Files: ${var_source_files}")
 

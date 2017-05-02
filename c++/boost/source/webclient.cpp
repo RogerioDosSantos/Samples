@@ -27,11 +27,11 @@ void ReadHandler(const boost::system::error_code& error_code, std::size_t bytes_
 	if (error_code)
 	{
 		//An error will also happen in case there is no more item to be read.
-		wprintf((wformat(L"ReadHandler - Error: %s\n") % error_code).str().c_str());
+		// wprintf((wformat(L"ReadHandler - Error: %s\n") % error_code).str().c_str());
 		return;
 	}
 
-	wprintf((wformat(L"ReadHandler - Data Start:\n%s\nReadHandler - Data End\n\n") % g_buffer.data()).str().c_str());
+	wprintf((wformat(L"ReadHandler - Data Start:\n%s\n\nReadHandler - Data End\n\n") % g_buffer.data()).str().c_str());
 	g_socket.async_read_some(boost::asio::buffer(g_buffer), ReadHandler);
 }
 
@@ -43,7 +43,7 @@ void ConnectHandler(const boost::system::error_code& error_code)
 		return;
 	}
 
-	boost::asio::write(g_socket, boost::asio::buffer("GET / HTTP 1.1\r\nHost: highscore.de\r\n\r\n"));
+	boost::asio::write(g_socket, boost::asio::buffer("GET / HTTP 1.1\r\nHost:  127.0.0.1\r\n\r\n"));
 	g_socket.async_read_some(boost::asio::buffer(g_buffer), ReadHandler);
 }
 
@@ -62,7 +62,7 @@ void boost_example::WebClient()
 {
 	wprintf(L"*** Boost WebClient Example - Start\n");
 
-	boost::asio::ip::tcp::resolver::query query("www.highscore.de", "80");
+	boost::asio::ip::tcp::resolver::query query("127.0.0.1", "7777", boost::asio::ip::resolver_query_base::numeric_service);
 	g_resolver.async_resolve(query, ResolveHandler);
 	g_io_service.run();
 

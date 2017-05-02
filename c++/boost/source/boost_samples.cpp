@@ -12,7 +12,7 @@
 // #include "./bind.h"
 // #include "./ioservice.h"
 // #include "./ioservicetcp.h"
-// #include "./webclient.h"
+#include "./webclient.h"
 #include "./webserver.h"
 // #include "./parser.h"
 
@@ -109,7 +109,7 @@ int main(int argc, char** argv)
 
             if (vm.count("webclient"))
             {
-                // WebClient();
+                WebClient();
                 return SUCCESS;
             }
 
