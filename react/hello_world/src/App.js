@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Button from './button.js';
+
 class HelloWorldApp extends Component {
   render() {
     return (
@@ -13,6 +15,7 @@ class HelloWorldApp extends Component {
         <p className="App-intro">
           This is a Hello World App
         </p>
+					<Button />;
       </div>
     );
   }
