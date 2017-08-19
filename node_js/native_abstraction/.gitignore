@@ -1,2 +1,5 @@
-build/
-node_modules/
+**/stage
+**/node_modules
+**/build/** 
+!**/build/*.sh
+!**/build/*.bat

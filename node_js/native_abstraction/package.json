@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "node-gyp rebuild",
-    "start": "node main.js"
+    "compile": "./build/compile_native_node_module.sh",
+    "start": "node ./source/main.js"
   },
   "keywords": [],
   "author": "Roger Santos",
