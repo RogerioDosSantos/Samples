@@ -23,6 +23,7 @@ message(" - Bin Directory: ${CMAKE_BUILD_TYPE}")
 
 set(var_source_files
   ./source/main.cpp
+  ./source/request_reply_server.cpp
   )
 message(" - Source Files: ${var_source_files}")
 

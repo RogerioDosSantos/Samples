@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "./request_reply_server.h"
+
 namespace
 {
   const size_t SUCCESS = 0;
@@ -19,7 +21,11 @@ int main(int argc, char** argv)
     {
         namespace po = boost::program_options;
         po::options_description desc("Options");
-        desc.add_options()("help", "Print help messages");
+        desc.add_options()
+          ("help", "Display this command help")
+          ("request_reply_server", "Request / Reply (Server)")
+          ("request_reply_client", "Request / Reply (Client)")
+        ;
 
         po::variables_map vm;
         try
@@ -27,7 +33,13 @@ int main(int argc, char** argv)
             po::store(po::parse_command_line(argc, argv, desc), vm);  // can throw
             if (vm.count("help"))
             {
-                std::cout << "Basic Command Line Parameter App" << std::endl << desc << std::endl;
+                std::cout << "0QM examples" << std::endl << desc << std::endl;
+                return SUCCESS;
+            }
+
+            if (vm.count("request_reply_server"))
+            {
+              zero_qm_example::RequestReplyServer();
                 return SUCCESS;
             }
 
