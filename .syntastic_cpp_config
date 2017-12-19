@@ -1,0 +1,4 @@
+-DTESTFRAMEWORK_GOOGLE
+-D_GNUC
+-I/usr/local/include
+-I/home/roger/third-party/boost

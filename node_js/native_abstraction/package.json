@@ -1,0 +1,19 @@
+{
+  "name": "native_abstraction",
+  "version": "1.0.0",
+  "description": "Native Abstractions for Node.js (Nan)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./build/compile_native_node_module.sh",
+    "start": "node ./source/main.js"
+  },
+  "keywords": [],
+  "author": "Roger Santos",
+  "license": "ISC",
+  "dependencies": {
+    "nan": "^2.6.2",
+    "node-gyp": "^3.6.2"
+  },
+  "gypfile": true
+}
